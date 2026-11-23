@@ -1,5 +1,6 @@
 ﻿@{
     var pageTitle = ViewData["Title"] as string ?? "Sri Subramanya Home Healthcare";
+    var description = ViewData["Description"] as string ?? "Home nursing, elder care and patient support enquiries in Belagavi, Karnataka.";
     var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 }
 <!DOCTYPE html>
@@ -7,8 +8,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f8faf8" />
-    <meta name="description" content="Compassionate home nursing, elder care, ambulance support and medical services in Belagavi. Speak with Sri Subramanya Home Healthcare, available 24/7." />
+    <meta name="theme-color" content="#f5faf8" />
+    <meta name="description" content="@description" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@pageTitle | Sri Subramanya Healthcare" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:locale" content="en_IN" />
     <title>@pageTitle | Sri Subramanya Healthcare, Belagavi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,44 +22,31 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="topline">
-        <div class="container topline-inner">
-            <span><span class="status-dot"></span> Here for Belagavi families, day and night</span>
-            <div class="topline-links"><a href="tel:+919632554468"><i class="fa-solid fa-phone"></i> +91 96325 54468</a><a href="https://wa.me/919632554468" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></div>
-        </div>
-    </div>
-    <header class="site-header">
-        <div class="container nav-wrap">
-            <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Sri Subramanya Home Healthcare home">
-                <span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span>
-                <span class="brand-copy"><strong>Sri Subramanya</strong><small>HOME HEALTHCARE · BELAGAVI</small></span>
-            </a>
-            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNavigation" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
-            <nav class="site-nav" id="siteNavigation" aria-label="Main navigation">
-                <a asp-controller="Home" asp-action="Index" class="@(currentAction == "Index" ? "current" : "")">Home</a>
-                <a asp-controller="Home" asp-action="Service" asp-route-slug="home-nursing">Home nursing</a>
-                <a asp-controller="Home" asp-action="Service" asp-route-slug="elder-care">Elder care</a>
-                <div class="nav-dropdown"><a href="/#services">Our services <i class="fa-solid fa-chevron-down"></i></a><div class="dropdown-menu">
-                    <a asp-controller="Home" asp-action="Service" asp-route-slug="ambulance">Ambulance</a>
-                    <a asp-controller="Home" asp-action="Service" asp-route-slug="medical-equipment-rental">Equipment on rent</a>
-                    <a asp-controller="Home" asp-action="Service" asp-route-slug="hospital-staffing">Hospital staffing</a>
-                    <a asp-controller="Home" asp-action="Service" asp-route-slug="patient-visits">Patient visits</a>
-                </div></div>
-                <a href="/#contact">Contact</a>
-                <a class="nav-cta" href="tel:+919632554468">Talk to our team <i class="fa-solid fa-arrow-right"></i></a>
-            </nav>
-        </div>
-    </header>
-    <main role="main">@RenderBody()</main>
-    <footer class="site-footer">
-        <div class="container footer-main">
-            <div class="footer-brand"><a class="brand brand-light" asp-controller="Home" asp-action="Index"><span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span><span class="brand-copy"><strong>Sri Subramanya</strong><small>HOME HEALTHCARE · BELAGAVI</small></span></a><p>Care that feels close to home. Supporting patients and families across Belagavi with a thoughtful, dependable team.</p></div>
-            <div><h3>Explore</h3><a asp-controller="Home" asp-action="Service" asp-route-slug="home-nursing">Home nursing</a><a asp-controller="Home" asp-action="Service" asp-route-slug="elder-care">Old age care</a><a asp-controller="Home" asp-action="Service" asp-route-slug="ambulance">Ambulance support</a><a asp-controller="Home" asp-action="Service" asp-route-slug="medical-equipment-rental">Medical equipment rental</a></div>
-            <div><h3>Get in touch</h3><a href="tel:+919632554468">+91 96325 54468</a><a href="tel:+919739213907">+91 97392 13907</a><a href="mailto:homecare@subramanyafoundation.com">homecare@subramanyafoundation.com</a><p>Belagavi, Karnataka 590006</p></div>
-        </div>
-        <div class="container footer-bottom"><span>© @DateTime.Now.Year Sri Subramanya Home Healthcare. All rights reserved.</span><span>Care with dignity. Support with heart.</span></div>
-    </footer>
-    <a class="floating-call" href="tel:+919632554468" aria-label="Call Sri Subramanya Home Healthcare"><i class="fa-solid fa-phone"></i><span>Call our care team</span></a>
+    <div class="topline"><div class="container topline-inner"><span><span class="status-dot"></span> Here for Belagavi families, day and night</span><div class="topline-links"><a href="tel:+919632554468"><i class="fa-solid fa-phone"></i> +91 96325 54468</a><a href="https://wa.me/919632554468" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></div></div></div>
+    <header class="site-header"><div class="container nav-wrap">
+        <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Sri Subramanya Home Healthcare home"><span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span><span class="brand-copy"><strong>Sri Subramanya</strong><small>HOME HEALTHCARE · BELAGAVI</small></span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNavigation" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+        <nav class="site-nav" id="siteNavigation" aria-label="Main navigation">
+            <a asp-controller="Home" asp-action="Index" class="@(currentAction == "Index" ? "current" : "")">Home</a>
+            <div class="nav-dropdown"><button class="nav-services-toggle" type="button" aria-expanded="false" aria-controls="navServicesMenu">Services <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button><div class="dropdown-menu" id="navServicesMenu" aria-label="Healthcare services">
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="home-nursing">Home nursing care</a>
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="elder-care">Old age care</a>
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="ambulance">Ambulance &amp; patient transport</a>
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="medical-equipment-rental">Medical equipment rental</a>
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="hospital-staffing">Hospital staff supply</a>
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="patient-visits">Doctor &amp; nurse home visits</a>
+            </div></div>
+            <a href="/#contact">Contact</a><a class="nav-cta" href="tel:+919632554468">Talk to our team <i class="fa-solid fa-arrow-right"></i></a>
+        </nav>
+    </div></header>
+    <main id="main-content">@RenderBody()</main>
+    <footer class="site-footer"><div class="container footer-main">
+        <div class="footer-brand"><a class="brand brand-light" asp-controller="Home" asp-action="Index"><span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span><span class="brand-copy"><strong>Sri Subramanya</strong><small>HOME HEALTHCARE · BELAGAVI</small></span></a><p>Thoughtful home healthcare and patient support enquiries for families and institutions in Belagavi, Karnataka.</p><div class="footer-social"><a href="tel:+919632554468"><i class="fa-solid fa-phone"></i> Call us</a><a href="https://wa.me/919632554468" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></div></div>
+        <div><h3>Home care</h3><a asp-controller="Home" asp-action="Service" asp-route-slug="home-nursing">Home nursing care</a><a asp-controller="Home" asp-action="Service" asp-route-slug="elder-care">Old age care</a><a asp-controller="Home" asp-action="Service" asp-route-slug="patient-visits">Doctor &amp; nurse visits</a></div>
+        <div><h3>Other services</h3><a asp-controller="Home" asp-action="Service" asp-route-slug="ambulance">Patient transportation</a><a asp-controller="Home" asp-action="Service" asp-route-slug="medical-equipment-rental">Equipment rental</a><a asp-controller="Home" asp-action="Service" asp-route-slug="hospital-staffing">Hospital staffing</a></div>
+        <div><h3>Get in touch</h3><a href="tel:+919632554468">+91 96325 54468</a><a href="tel:+919739213907">+91 97392 113907</a><a href="mailto:homecare@subramanyafoundation.com">homecare@subramanyafoundation.com</a><p>Belagavi, Karnataka 590006</p></div>
+    </div><div class="container footer-bottom"><span>© @DateTime.Now.Year Sri Subramanya Home Healthcare. All rights reserved.</span><a asp-controller="Home" asp-action="Privacy">Privacy</a><span>Care with dignity. Support with heart.</span></div></footer>
+    <div class="floating-actions" aria-label="Contact our care team"><a class="floating-call" href="tel:+919632554468"><i class="fa-solid fa-phone"></i><span>Call our team</span></a><a class="floating-whatsapp" href="https://wa.me/919632554468" target="_blank" rel="noopener" aria-label="Send a WhatsApp enquiry"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a></div>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

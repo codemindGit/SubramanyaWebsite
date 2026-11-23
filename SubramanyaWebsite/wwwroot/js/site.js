@@ -10,12 +10,38 @@
             menuButton.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
         });
 
+        const servicesToggle = navigation.querySelector('.nav-services-toggle');
+        const servicesMenu = navigation.querySelector('#navServicesMenu');
+        if (servicesToggle && servicesMenu) {
+            servicesToggle.addEventListener('click', () => {
+                const isOpen = servicesToggle.getAttribute('aria-expanded') !== 'true';
+                servicesToggle.setAttribute('aria-expanded', String(isOpen));
+                servicesToggle.closest('.nav-dropdown').classList.toggle('open', isOpen);
+            });
+        }
+
         navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
             navigation.classList.remove('open');
             menuButton.setAttribute('aria-expanded', 'false');
             menuButton.setAttribute('aria-label', 'Open navigation');
             menuButton.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            servicesToggle?.setAttribute('aria-expanded', 'false');
+            servicesToggle?.closest('.nav-dropdown').classList.remove('open');
         }));
+    }
+
+    const requestedService = new URLSearchParams(window.location.search).get('service');
+    const serviceOptions = {
+        'home-nursing': 'Home Nursing Care',
+        'elder-care': 'Old Age Care',
+        ambulance: 'Ambulance Service',
+        'medical-equipment-rental': 'Surgical Material Rental',
+        'hospital-staffing': 'Hospital Staffing',
+        'patient-visits': 'Patient Visit'
+    };
+    const serviceSelect = document.querySelector('#RequiredService');
+    if (serviceSelect && requestedService && serviceOptions[requestedService]) {
+        serviceSelect.value = serviceOptions[requestedService];
     }
 
     window.submitCareForm = async (event) => {
