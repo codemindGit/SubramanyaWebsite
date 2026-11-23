@@ -1,48 +1,60 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var pageTitle = ViewData["Title"] as string ?? "Sri Subramanya Home Healthcare";
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SubramanyaWebsite</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta name="theme-color" content="#f8faf8" />
+    <meta name="description" content="Compassionate home nursing, elder care, ambulance support and medical services in Belagavi. Speak with Sri Subramanya Home Healthcare, available 24/7." />
+    <title>@pageTitle | Sri Subramanya Healthcare, Belagavi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SubramanyaWebsite.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SubramanyaWebsite</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - SubramanyaWebsite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="topline">
+        <div class="container topline-inner">
+            <span><span class="status-dot"></span> Here for Belagavi families, day and night</span>
+            <div class="topline-links"><a href="tel:+919632554468"><i class="fa-solid fa-phone"></i> +91 96325 54468</a><a href="https://wa.me/919632554468" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></div>
         </div>
+    </div>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Sri Subramanya Home Healthcare home">
+                <span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span>
+                <span class="brand-copy"><strong>Sri Subramanya</strong><small>HOME HEALTHCARE · BELAGAVI</small></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNavigation" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+            <nav class="site-nav" id="siteNavigation" aria-label="Main navigation">
+                <a asp-controller="Home" asp-action="Index" class="@(currentAction == "Index" ? "current" : "")">Home</a>
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="home-nursing">Home nursing</a>
+                <a asp-controller="Home" asp-action="Service" asp-route-slug="elder-care">Elder care</a>
+                <div class="nav-dropdown"><a href="/#services">Our services <i class="fa-solid fa-chevron-down"></i></a><div class="dropdown-menu">
+                    <a asp-controller="Home" asp-action="Service" asp-route-slug="ambulance">Ambulance</a>
+                    <a asp-controller="Home" asp-action="Service" asp-route-slug="medical-equipment-rental">Equipment on rent</a>
+                    <a asp-controller="Home" asp-action="Service" asp-route-slug="hospital-staffing">Hospital staffing</a>
+                    <a asp-controller="Home" asp-action="Service" asp-route-slug="patient-visits">Patient visits</a>
+                </div></div>
+                <a href="/#contact">Contact</a>
+                <a class="nav-cta" href="tel:+919632554468">Talk to our team <i class="fa-solid fa-arrow-right"></i></a>
+            </nav>
+        </div>
+    </header>
+    <main role="main">@RenderBody()</main>
+    <footer class="site-footer">
+        <div class="container footer-main">
+            <div class="footer-brand"><a class="brand brand-light" asp-controller="Home" asp-action="Index"><span class="brand-mark"><i class="fa-solid fa-heart-pulse"></i></span><span class="brand-copy"><strong>Sri Subramanya</strong><small>HOME HEALTHCARE · BELAGAVI</small></span></a><p>Care that feels close to home. Supporting patients and families across Belagavi with a thoughtful, dependable team.</p></div>
+            <div><h3>Explore</h3><a asp-controller="Home" asp-action="Service" asp-route-slug="home-nursing">Home nursing</a><a asp-controller="Home" asp-action="Service" asp-route-slug="elder-care">Old age care</a><a asp-controller="Home" asp-action="Service" asp-route-slug="ambulance">Ambulance support</a><a asp-controller="Home" asp-action="Service" asp-route-slug="medical-equipment-rental">Medical equipment rental</a></div>
+            <div><h3>Get in touch</h3><a href="tel:+919632554468">+91 96325 54468</a><a href="tel:+919739213907">+91 97392 13907</a><a href="mailto:homecare@subramanyafoundation.com">homecare@subramanyafoundation.com</a><p>Belagavi, Karnataka 590006</p></div>
+        </div>
+        <div class="container footer-bottom"><span>© @DateTime.Now.Year Sri Subramanya Home Healthcare. All rights reserved.</span><span>Care with dignity. Support with heart.</span></div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <a class="floating-call" href="tel:+919632554468" aria-label="Call Sri Subramanya Home Healthcare"><i class="fa-solid fa-phone"></i><span>Call our care team</span></a>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
